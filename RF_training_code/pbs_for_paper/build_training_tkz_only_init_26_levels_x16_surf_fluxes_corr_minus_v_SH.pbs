@@ -1,0 +1,16 @@
+#PBS -l select=1:ncpus=12:mpiprocs=12:mem=109gb
+#PBS -l walltime=06:00:00 
+#PBS -N b_tkzx16_surf_fluxes_corr_levels_init_fiel
+#PBS -o /glade/u/home/janniy/convection_parametrization/paul_codes/ML-convection_sam_flex_io/build_out/build_out_tkz_init_26_levels_x16_surf_fluxes_corr_minus_v_SH
+#PBS -e /glade/u/home/janniy/convection_parametrization/paul_codes/ML-convection_sam_flex_io/build_out/build_err_tkz_init_26_levels_x16_surf_fluxes_corr_minus_v_SH
+#PBS -q regular
+#PBS -A UMIT0027
+
+echo 'building data! qv_init correction'
+cd '/glade/work/janniy/python_ncar_env/bin/'
+source activate
+cd '/glade/u/home/janniy/convection_parametrization/paul_codes/ML-convection_sam_flex_io'
+python < 'build_training_tkz_only_init_26_levels_x16_surf_fluxes_corr_minus_v_SH.py';
+echo 'training RF! qv_init correction'
+python < 'run_rf_tkz_only_init_26_levels_x16_surf_fluxes_corr_minus_v_SH.py';
+

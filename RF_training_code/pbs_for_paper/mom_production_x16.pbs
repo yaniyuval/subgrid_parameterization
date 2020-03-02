@@ -1,0 +1,16 @@
+#PBS -l select=1:ncpus=10:mpiprocs=10:mem=109gb
+#PBS -l walltime=06:00:00 
+#PBS -N b_mom_x16_prod
+#PBS -o /glade/u/home/janniy/convection_parametrization/paul_codes/ML-convection_sam_flex_io/build_out/build_out_x16_mom
+#PBS -e /glade/u/home/janniy/convection_parametrization/paul_codes/ML-convection_sam_flex_io/build_out/build_err_x16_mom
+#PBS -q regular
+#PBS -A UMIT0027
+
+echo 'building data! qv_init correction'
+cd '/glade/work/janniy/python_ncar_env/bin/'
+source activate
+cd '/glade/u/home/janniy/convection_parametrization/paul_codes/ML-convection_sam_flex_io'
+# python < 'build_production_x16_momentum.py'
+echo 'training RF! qv_init correction'
+python < 'run_production_x16_momentum.py'
+
